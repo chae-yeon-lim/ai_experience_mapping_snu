@@ -665,47 +665,32 @@
             margin-bottom: 0.25rem;
         }
 
-        .type-selector {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+        .modal-subtitle {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
         }
 
-        .type-card {
-            padding: 1.25rem;
-            border: 2px solid var(--color-border);
+        .modal-type-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
             border-radius: 0.5rem;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s;
-            background: var(--color-surface);
-        }
-
-        .type-card.selected.human {
-            border-color: var(--color-human);
-            background: #fffbeb;
-        }
-
-        .type-card.selected.ai {
-            border-color: var(--color-ai);
-            background: #f0f7f7;
-        }
-
-        .type-emoji {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .type-label {
             font-weight: 600;
             font-size: 0.9rem;
-            margin-bottom: 0.25rem;
+            margin-bottom: 1rem;
         }
 
-        .type-description {
-            font-size: 0.8rem;
-            color: var(--color-text-secondary);
+        .modal-type-indicator.human {
+            background: #fffbeb;
+            color: var(--color-human);
+            border: 2px solid var(--color-human);
+        }
+
+        .modal-type-indicator.ai {
+            background: #f0f7f7;
+            color: var(--color-primary-dark);
+            border: 2px solid var(--color-ai);
         }
 
         .sentiment-selector {
@@ -738,6 +723,47 @@
         .sentiment-label {
             font-weight: 600;
             font-size: 0.8rem;
+        }
+
+        .type-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .type-card {
+            padding: 1.25rem;
+            border: 2px solid var(--color-border);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+            background: var(--color-surface);
+        }
+
+        .type-card:hover {
+            border-color: var(--color-primary);
+        }
+
+        .type-card.selected.human {
+            border-color: var(--color-human);
+            background: #fffbeb;
+        }
+
+        .type-card.selected.ai {
+            border-color: var(--color-ai);
+            background: #f0f7f7;
+        }
+
+        .type-emoji {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .type-label {
+            font-weight: 600;
+            font-size: 0.9rem;
         }
 
         .strength-selector {
@@ -807,7 +833,6 @@
                 align-items: center;
             }
 
-            .type-selector,
             .sentiment-selector,
             .strength-selector {
                 grid-template-columns: 1fr;
@@ -872,7 +897,7 @@
                         <strong>데이터 활용:</strong> 수집된 익명 데이터는 교육 커뮤니티 자료 개발 및 학술 연구 출판에 활용될 수 있습니다.
                     </p>
                     <p style="margin-bottom: 0.75rem; line-height: 1.6; font-size: 0.9rem;">
-                        <strong>문의:</strong> <a href="info@debiasme.com" style="color: var(--color-primary);">info@debiasme.com</a>
+                        <strong>문의:</strong> <a href="mailto:info@debiasme.com" style="color: var(--color-primary);">info@debiasme.com</a>
                     </p>
                     
                     <div class="form-group" style="margin-top: 1.5rem; margin-bottom: 0;">
@@ -984,21 +1009,20 @@
             <div class="panel">
                 <h2 class="panel-title">AI 사용 경험 돌아보기</h2>
                 <p class="panel-intro">
-                    AI 사용 경험에서 어떤 점이 기억에 남나요? 예를 들어, 급한 상황에서 AI를 사용했나요? AI가 내 의도를 놓쳤거나, 혹은 전문가 만큼 좋은 답변을 주었나요?<br>
-        아래 원을 클릭해 발견한 점을 남겨보세요.
+                    AI 사용 경험에서 어떤 점이 기억에 남나요? 예를 들어, 급한 상황에서 AI를 사용했나요? AI가 내 의도를 놓쳤거나, 혹은 전문가 만큼 좋은 답변을 주었나요? 클릭해 기록해보세요.
                 </p>
 
                 <div class="guided-steps-container" id="currentGuidedSteps">
                     <div class="guided-step-circle human" id="currentAddHumanBtn">
                         <span class="step-icon">🧠</span>
                         <span class="step-label">나의 생각과 행동</span>
-                        <span class="step-hint">나의 의도, 습관, 또는 선택들<br>(예: 좋은 추가 질문을 한다, 확인 없이 너무 믿었다)</span></span>
+                        <span class="step-hint">나의 의도, 습관, 또는 선택들<br>(예: 좋은 추가 질문을 함, 확인 없이 믿음)</span>
                     </div>
                     
                     <div class="guided-step-circle ai" id="currentAddAIBtn">
                         <span class="step-icon">🤖</span>
                         <span class="step-label">AI의 반응/특징</span>
-                        <span class="step-hint">AI가 보여준 답변이나 패턴<br>(예: 설명을 명쾌하게 했다, 틀린 내용도 그럴싸하게 말했다)</span>
+                        <span class="step-hint">AI가 보여준 답변이나 패턴<br>(예: 정확한 설명, 틀린 내용을 사실처럼 지어냄)</span>
                     </div>
 
                     <div class="guided-step-circle any" id="currentAddAnyBtn" style="display: none;">
@@ -1022,9 +1046,8 @@
                     <h2 class="panel-title">기록한 내용 사이에 어떤 관계가 있나요?</h2>
                     <p class="panel-intro">
                        나와 AI의 특징이 서로 영향을 주었나요?<br>
-            예를 들어, <strong>"지시를 명확하게 했다" → "AI가 유용한 답을 줬다"</strong><br>
-            혹은 <strong>"AI가 자신 있게 말했다" → "그래서 확인하지 않았다"</strong><br>
-            하나를 선택한 뒤, 다른 하나를 클릭해 연결해 주세요.
+                       예를 들어, <strong>"지시를 명확하게 했다" → "AI가 유용한 답을 줬다"</strong><br>
+                       혹은 <strong>"AI가 자신 있게 말했다" → "그래서 확인하지 않았다"</strong><br>
                     </p>
                 </div>
 
@@ -1070,7 +1093,7 @@
                 </p>
 
                 <div class="form-group">
-                    <label class="form-label">미래에서 "좋은" AI 활용 경험은 어떤 모습까요?</label>
+                    <label class="form-label">미래에서 "좋은" AI 활용 경험은 어떤 모습일까요?</label>
                     <textarea class="form-textarea" id="futureContext" 
                               placeholder="자유로운 생각을 공유해주세요: AI와 함께할 때 어떤 기분이 들까요? AI가 당신이 무엇을 하거나 어떤 사람이 되도록 도와줄까요?"></textarea>
                 </div>
@@ -1084,7 +1107,7 @@
             <div class="panel">
                 <h2 class="panel-title">이런 미래를 가능하게 하려면...</h2>
                 <p class="panel-intro">
-                    이상적인 경험을 만들기 위해 우리와 AI는 각각 어떤 역할을 해야 할까요?<br>원을 클릭해 생각을 추가하세요.
+                    이상적인 경험을 만들기 위해 우리와 AI는 각각 어떤 역할을 해야 할까요?
                 </p>
 
                 <div class="guided-steps-container" id="futureGuidedSteps">
@@ -1120,7 +1143,7 @@
                 <div class="panel">
                     <h2 class="panel-title">어떻게 함께 할 수 있을까?</h2>
                     <p class="panel-intro">
-                        이상적인 미래에서 나의 역할과 AI의 역할은 서로 어떻게 도울 수 있을까요?<br>두 기록을 연결하세요.
+                        이상적인 미래에서 나의 역할과 AI의 역할은 서로 어떻게 도울 수 있을까요?
                     </p>
                 </div>
 
@@ -1134,7 +1157,7 @@
                             </div>
                             <div class="connection-helper-step">
                                 <span class="connection-helper-number">2</span>
-                                <span>연결할 다른 기 클릭</span>
+                                <span>연결할 다른 기록 클릭</span>
                             </div>
                             <div class="connection-helper-step">
                                 <span class="connection-helper-number">3</span>
@@ -1191,18 +1214,20 @@
                     </select>
                 </div>
 
-                <div class="form-group" id="afterOtherGroup" style="display: none;">
+                <div class="form-group" id="valuableOtherGroup" style="display: none;">
                     <label class="form-label">구체적인 의견을 적어주세요</label>
-                    <input type="text" class="form-input" id="afterMentalModelOther">
+                    <input type="text" class="form-input" id="reflectionValuableOther">
                 </div>
+
                 <div class="form-group">
                     <label class="form-label">설문 활동에서 어려운 점이 있었나요? (해당되는 것 모두 선택)</label>
                     <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.75rem;">
-                       <label style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
+                        <label style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
                             <input type="checkbox" id="feedbackClear" style="width: 16px; height: 16px; margin-top: 2px; cursor: pointer;">
                             <span>활동 내용을 이해하지 못했음</span>
-                        </label><label style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
-                            <input type="checkbox" id="feedbackClear" style="width: 16px; height: 16px; margin-top: 2px; cursor: pointer;">
+                        </label>
+                        <label style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
+                            <input type="checkbox" id="feedbackValue" style="width: 16px; height: 16px; margin-top: 2px; cursor: pointer;">
                             <span>기록 활동 중 본인 또는 AI에 관해 기록하는 부분이 어려웠음</span>
                         </label>
                         <label style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
@@ -1270,38 +1295,45 @@
         </div>
     </div>
 
-    <div id="nodeModal" class="modal">
+    <!-- Current Scenario Modal (with sentiment) -->
+    <div id="currentNodeModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="modalTitle">기록 추가</h3>
+                <h3 class="modal-title" id="currentModalTitle">패턴 정의하기</h3>
+                <p class="modal-subtitle" id="currentModalSubtitle"></p>
             </div>
 
-            <div class="form-group">
+            <!-- Type indicator (shown when type is pre-selected) -->
+            <div id="currentTypeIndicator" class="modal-type-indicator human" style="display: none;">
+                <span id="currentTypeIcon">🧠</span>
+                <span id="currentTypeLabel">나에 관한 기록</span>
+            </div>
+
+            <!-- Type selector (shown for "더 추가하기") -->
+            <div class="form-group" id="currentTypeSelector" style="display: none;">
                 <label class="form-label">이 기록은</label>
                 <div class="type-selector">
                     <div class="type-card human" data-type="human">
                         <div class="type-emoji">🧠</div>
                         <div class="type-label">나에 관한 기록</div>
-                        <p class="type-description">AI 사용시 나의 행동, 생각, 감정은...</p>
                     </div>
                     <div class="type-card ai" data-type="ai">
                         <div class="type-emoji">🤖</div>
                         <div class="type-label">AI에 관한 기록</div>
-                        <p class="type-description">AI의 행동 또는 결과의 특징은...</p>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="form-label"> 경험을 평가한다면?</label>
-                <div class="sentiment-selector">
+                <label class="form-label">이 경험을 평가한다면?</label>
+                <div class="sentiment-selector" id="currentSentimentSelector">
                     <div class="sentiment-card" data-sentiment="helpful">
                         <div class="sentiment-emoji">✨</div>
                         <div class="sentiment-label">긍정적 (도움이 됨, 효율적, 만족스러움)</div>
                     </div>
                     <div class="sentiment-card" data-sentiment="neutral">
                         <div class="sentiment-emoji">➖</div>
-                        <div class="sentiment-label">중립적 (특별하지 않음)</div>
+                        <div class="sentiment-label">중립적</div>
                     </div>
                     <div class="sentiment-card" data-sentiment="problematic">
                         <div class="sentiment-emoji">⚠️</div>
@@ -1312,20 +1344,71 @@
 
             <div class="form-group">
                 <label class="form-label">한 단어나 짧은 문구로 표현한다면?</label>
-                <input type="text" class="form-input" id="nodeName">
+                <input type="text" class="form-input" id="currentNodeName" placeholder="예: 명확한 지시, 검증 없이 수용">
             </div>
 
             <div class="form-group">
                 <label class="form-label">어떤 내용을 발견하셨나요? (구체적인 설명)</label>
-                <textarea class="form-textarea" id="nodeDescription" 
+                <textarea class="form-textarea" id="currentNodeDescription" 
                           placeholder="무슨 일이 있었나요? 왜 중요한가요?"></textarea>
             </div>
 
             <div class="btn-group">
-                <button class="btn-primary" id="saveNodeBtn" style="flex: 1;">
+                <button class="btn-primary" id="saveCurrentNodeBtn" style="flex: 1;">
                     저장
                 </button>
-                <button class="btn-secondary" id="cancelNodeBtn">
+                <button class="btn-secondary" id="cancelCurrentNodeBtn">
+                    취소
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Future Scenario Modal (simplified, no sentiment) -->
+    <div id="futureNodeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="futureModalTitle">역할 정의하기</h3>
+                <p class="modal-subtitle" id="futureModalSubtitle"></p>
+            </div>
+
+            <!-- Type indicator (shown when type is pre-selected) -->
+            <div id="futureTypeIndicator" class="modal-type-indicator human" style="display: none;">
+                <span id="futureTypeIcon">🧠</span>
+                <span id="futureTypeLabel">나의 역할</span>
+            </div>
+
+            <!-- Type selector (shown for "더 추가하기") -->
+            <div class="form-group" id="futureTypeSelector" style="display: none;">
+                <label class="form-label">이 기록은</label>
+                <div class="type-selector">
+                    <div class="type-card human" data-type="human">
+                        <div class="type-emoji">🧠</div>
+                        <div class="type-label">나의 역할</div>
+                    </div>
+                    <div class="type-card ai" data-type="ai">
+                        <div class="type-emoji">🤖</div>
+                        <div class="type-label">AI의 역할</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">한 단어나 짧은 문구로 표현한다면?</label>
+                <input type="text" class="form-input" id="futureNodeName" placeholder="예: 비판적 사고, 투명한 설명">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">왜 이 역할이 중요한가요? (구체적인 설명)</label>
+                <textarea class="form-textarea" id="futureNodeDescription" 
+                          placeholder="이 역할이 이상적인 미래를 만드는 데 어떻게 기여하나요?"></textarea>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-primary" id="saveFutureNodeBtn" style="flex: 1;">
+                    저장
+                </button>
+                <button class="btn-secondary" id="cancelFutureNodeBtn">
                     취소
                 </button>
             </div>
@@ -1432,6 +1515,11 @@
             }
         };
 
+        // Modal state
+        let currentModalType = null;
+        let currentModalSentiment = null;
+        let futureModalType = null;
+
         // ===============================================
         // UTILITY FUNCTIONS
         // ===============================================
@@ -1526,7 +1614,7 @@
                             <span class="node-type-badge ${node.type}">
                                 ${node.type === 'human' ? '🧠 나' : '🤖 AI'}
                             </span>
-                            <span style="font-size: 1rem;">${sentimentEmojis[node.sentiment]}</span>
+                            ${node.sentiment ? `<span style="font-size: 1rem;">${sentimentEmojis[node.sentiment]}</span>` : ''}
                         </div>
                         <h4 class="node-name">${node.name}</h4>
                         <p class="node-description">${node.description}</p>
@@ -1560,7 +1648,13 @@
         window.editNode = function(scenarioName, nodeId) {
             appState.activeScenario = scenarioName;
             const node = appState.scenarios[scenarioName].nodes.find(n => n.id === nodeId);
-            if (node) openNodeModal(node);
+            if (node) {
+                if (scenarioName === 'current') {
+                    openCurrentNodeModal(node.type, node);
+                } else {
+                    openFutureNodeModal(node.type, node);
+                }
+            }
         };
 
         window.deleteNode = function(scenarioName, nodeId) {
@@ -1575,50 +1669,143 @@
         };
 
         // ===============================================
-        // NODE MODAL
+        // CURRENT SCENARIO NODE MODAL (with sentiment)
         // ===============================================
         
-        let selectedType = null;
-        let selectedSentiment = null;
-
-        function openNodeModal(nodeToEdit = null, preselectedType = null) {
-            selectedType = null;
-            selectedSentiment = null;
+        function openCurrentNodeModal(type, nodeToEdit = null, showTypeSelector = false) {
+            currentModalType = type;
+            currentModalSentiment = null;
             
-            if (nodeToEdit) {
-                getCurrentScenario().editingNode = nodeToEdit;
-                document.getElementById('modalTitle').textContent = '패턴 수정하기';
-                document.getElementById('nodeName').value = nodeToEdit.name;
-                document.getElementById('nodeDescription').value = nodeToEdit.description;
-                selectedType = nodeToEdit.type;
-                selectedSentiment = nodeToEdit.sentiment;
-                
-                document.querySelectorAll('.type-card').forEach(card => {
-                    card.classList.toggle('selected', card.dataset.type === nodeToEdit.type);
-                });
-                document.querySelectorAll('#nodeModal .sentiment-card').forEach(card => {
-                    card.classList.toggle('selected', card.dataset.sentiment === nodeToEdit.sentiment);
-                });
+            const indicator = document.getElementById('currentTypeIndicator');
+            const selector = document.getElementById('currentTypeSelector');
+            const icon = document.getElementById('currentTypeIcon');
+            const label = document.getElementById('currentTypeLabel');
+            
+            // Reset type selector
+            document.querySelectorAll('#currentTypeSelector .type-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            if (showTypeSelector) {
+                // Show type selector for "더 추가하기"
+                indicator.style.display = 'none';
+                selector.style.display = 'block';
+                currentModalType = null; // Will be set when user selects
             } else {
-                getCurrentScenario().editingNode = null;
-                document.getElementById('modalTitle').textContent = '패턴 정의하기';
-                document.getElementById('nodeName').value = '';
-                document.getElementById('nodeDescription').value = '';
-                document.querySelectorAll('.type-card, #nodeModal .sentiment-card').forEach(card => {
-                    card.classList.remove('selected');
-                });
+                // Show type indicator for specific type buttons
+                indicator.style.display = 'flex';
+                selector.style.display = 'none';
                 
-                if (preselectedType) {
-                    selectedType = preselectedType;
-                    document.querySelectorAll('.type-card').forEach(card => {
-                        if (card.dataset.type === preselectedType) {
-                            card.classList.add('selected');
-                        }
-                    });
+                indicator.className = 'modal-type-indicator ' + type;
+                if (type === 'human') {
+                    icon.textContent = '🧠';
+                    label.textContent = '나에 관한 기록';
+                } else {
+                    icon.textContent = '🤖';
+                    label.textContent = 'AI에 관한 기록';
                 }
             }
             
-            document.getElementById('nodeModal').classList.add('active');
+            document.querySelectorAll('#currentSentimentSelector .sentiment-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            if (nodeToEdit) {
+                appState.scenarios.current.editingNode = nodeToEdit;
+                document.getElementById('currentModalTitle').textContent = '패턴 수정하기';
+                document.getElementById('currentNodeName').value = nodeToEdit.name;
+                document.getElementById('currentNodeDescription').value = nodeToEdit.description;
+                currentModalSentiment = nodeToEdit.sentiment;
+                currentModalType = nodeToEdit.type;
+                
+                // Show indicator for editing (type is already determined)
+                indicator.style.display = 'flex';
+                selector.style.display = 'none';
+                indicator.className = 'modal-type-indicator ' + nodeToEdit.type;
+                if (nodeToEdit.type === 'human') {
+                    icon.textContent = '🧠';
+                    label.textContent = '나에 관한 기록';
+                } else {
+                    icon.textContent = '🤖';
+                    label.textContent = 'AI에 관한 기록';
+                }
+                
+                document.querySelectorAll('#currentSentimentSelector .sentiment-card').forEach(card => {
+                    card.classList.toggle('selected', card.dataset.sentiment === nodeToEdit.sentiment);
+                });
+            } else {
+                appState.scenarios.current.editingNode = null;
+                document.getElementById('currentModalTitle').textContent = '패턴 정의하기';
+                document.getElementById('currentNodeName').value = '';
+                document.getElementById('currentNodeDescription').value = '';
+            }
+            
+            document.getElementById('currentNodeModal').classList.add('active');
+        }
+
+        // ===============================================
+        // FUTURE SCENARIO NODE MODAL (simplified)
+        // ===============================================
+        
+        function openFutureNodeModal(type, nodeToEdit = null, showTypeSelector = false) {
+            futureModalType = type;
+            
+            const indicator = document.getElementById('futureTypeIndicator');
+            const selector = document.getElementById('futureTypeSelector');
+            const icon = document.getElementById('futureTypeIcon');
+            const label = document.getElementById('futureTypeLabel');
+            
+            // Reset type selector
+            document.querySelectorAll('#futureTypeSelector .type-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            if (showTypeSelector) {
+                // Show type selector for "더 추가하기"
+                indicator.style.display = 'none';
+                selector.style.display = 'block';
+                futureModalType = null; // Will be set when user selects
+            } else {
+                // Show type indicator for specific type buttons
+                indicator.style.display = 'flex';
+                selector.style.display = 'none';
+                
+                indicator.className = 'modal-type-indicator ' + type;
+                if (type === 'human') {
+                    icon.textContent = '🧠';
+                    label.textContent = '나의 역할';
+                } else {
+                    icon.textContent = '🤖';
+                    label.textContent = 'AI의 역할';
+                }
+            }
+            
+            if (nodeToEdit) {
+                appState.scenarios.future.editingNode = nodeToEdit;
+                document.getElementById('futureModalTitle').textContent = '역할 수정하기';
+                document.getElementById('futureNodeName').value = nodeToEdit.name;
+                document.getElementById('futureNodeDescription').value = nodeToEdit.description;
+                futureModalType = nodeToEdit.type;
+                
+                // Show indicator for editing (type is already determined)
+                indicator.style.display = 'flex';
+                selector.style.display = 'none';
+                indicator.className = 'modal-type-indicator ' + nodeToEdit.type;
+                if (nodeToEdit.type === 'human') {
+                    icon.textContent = '🧠';
+                    label.textContent = '나의 역할';
+                } else {
+                    icon.textContent = '🤖';
+                    label.textContent = 'AI의 역할';
+                }
+            } else {
+                appState.scenarios.future.editingNode = null;
+                document.getElementById('futureModalTitle').textContent = '역할 정의하기';
+                document.getElementById('futureNodeName').value = '';
+                document.getElementById('futureNodeDescription').value = '';
+            }
+            
+            document.getElementById('futureNodeModal').classList.add('active');
         }
 
         // ===============================================
@@ -1880,15 +2067,18 @@
                 document.getElementById('afterOtherGroup').style.display = this.value === 'other' ? 'block' : 'none';
             });
 
+            document.getElementById('reflectionValuable').addEventListener('change', function() {
+                document.getElementById('valuableOtherGroup').style.display = this.value === 'other' ? 'block' : 'none';
+            });
+
             document.getElementById('continueToCurrentBtn').addEventListener('click', function() {
                 const university = document.getElementById('university').value;
                 const field = document.getElementById('field').value;
                 const year = document.getElementById('year').value;
                 const beforeMentalModel = document.getElementById('beforeMentalModel').value;
-                const aiToolsUsed = document.getElementById('aiToolsUsed').value;
                 const aiExperience = document.getElementById('aiExperience').value;
                 
-                if (!university || !field || !year || !beforeMentalModel || !aiToolsUsed || !aiExperience) {
+                if (!university || !field || !year || !beforeMentalModel || !aiExperience) {
                     alert('모든 필수 항목을 입력해 주세요.');
                     return;
                 }
@@ -1897,7 +2087,6 @@
                 appState.beforePerspectives = {
                     mentalModel: beforeMentalModel,
                     mentalModelOther: document.getElementById('beforeMentalModelOther').value,
-                    aiToolsUsed: aiToolsUsed,
                     aiExperience: aiExperience
                 };
                 
@@ -1908,17 +2097,17 @@
             // Chapter 3 - Current Scenario Node Buttons
             document.getElementById('currentAddHumanBtn').addEventListener('click', function() {
                 appState.activeScenario = 'current';
-                openNodeModal(null, 'human');
+                openCurrentNodeModal('human');
             });
 
             document.getElementById('currentAddAIBtn').addEventListener('click', function() {
                 appState.activeScenario = 'current';
-                openNodeModal(null, 'ai');
+                openCurrentNodeModal('ai');
             });
 
             document.getElementById('currentAddAnyBtn').addEventListener('click', function() {
                 appState.activeScenario = 'current';
-                openNodeModal();
+                openCurrentNodeModal(null, null, true); // Show type selector
             });
 
             document.getElementById('currentContinueToMappingBtn').addEventListener('click', function() {
@@ -1943,17 +2132,17 @@
             // Chapter 4 - Future Scenario Node Buttons
             document.getElementById('futureAddHumanBtn').addEventListener('click', function() {
                 appState.activeScenario = 'future';
-                openNodeModal(null, 'human');
+                openFutureNodeModal('human');
             });
 
             document.getElementById('futureAddAIBtn').addEventListener('click', function() {
                 appState.activeScenario = 'future';
-                openNodeModal(null, 'ai');
+                openFutureNodeModal('ai');
             });
 
             document.getElementById('futureAddAnyBtn').addEventListener('click', function() {
                 appState.activeScenario = 'future';
-                openNodeModal();
+                openFutureNodeModal(null, null, true); // Show type selector
             });
 
             document.getElementById('futureContinueToMappingBtn').addEventListener('click', function() {
@@ -1975,37 +2164,39 @@
                 switchChapter(5);
             });
 
-            // Node Modal
-            document.querySelectorAll('.type-card').forEach(card => {
+            // Current Node Modal - Type selector
+            document.querySelectorAll('#currentTypeSelector .type-card').forEach(card => {
                 card.addEventListener('click', function() {
-                    document.querySelectorAll('.type-card').forEach(c => c.classList.remove('selected'));
+                    document.querySelectorAll('#currentTypeSelector .type-card').forEach(c => c.classList.remove('selected'));
                     this.classList.add('selected');
-                    selectedType = this.dataset.type;
+                    currentModalType = this.dataset.type;
                 });
             });
 
-            document.querySelectorAll('#nodeModal .sentiment-card').forEach(card => {
+            // Current Node Modal - Sentiment selector
+            document.querySelectorAll('#currentSentimentSelector .sentiment-card').forEach(card => {
                 card.addEventListener('click', function() {
-                    document.querySelectorAll('#nodeModal .sentiment-card').forEach(c => c.classList.remove('selected'));
+                    document.querySelectorAll('#currentSentimentSelector .sentiment-card').forEach(c => c.classList.remove('selected'));
                     this.classList.add('selected');
-                    selectedSentiment = this.dataset.sentiment;
+                    currentModalSentiment = this.dataset.sentiment;
                 });
             });
 
-            document.getElementById('saveNodeBtn').addEventListener('click', function() {
-                const name = document.getElementById('nodeName').value.trim();
-                const description = document.getElementById('nodeDescription').value.trim();
+            // Current Node Modal - Save
+            document.getElementById('saveCurrentNodeBtn').addEventListener('click', function() {
+                const name = document.getElementById('currentNodeName').value.trim();
+                const description = document.getElementById('currentNodeDescription').value.trim();
                 
-                if (!selectedType || !selectedSentiment || !name || !description) {
+                if (!currentModalType || !currentModalSentiment || !name || !description) {
                     alert('모든 필수 항목을 입력해 주세요.');
                     return;
                 }
                 
-                const scenario = getCurrentScenario();
+                const scenario = appState.scenarios.current;
                 const node = {
                     id: scenario.editingNode ? scenario.editingNode.id : Date.now(),
-                    type: selectedType,
-                    sentiment: selectedSentiment,
+                    type: currentModalType,
+                    sentiment: currentModalSentiment,
                     name: name,
                     description: description,
                     createdAt: scenario.editingNode ? scenario.editingNode.createdAt : Date.now()
@@ -2020,12 +2211,58 @@
                     logEdit('create_node', node);
                 }
                 
-                document.getElementById('nodeModal').classList.remove('active');
-                renderNodesGallery(appState.activeScenario);
+                document.getElementById('currentNodeModal').classList.remove('active');
+                renderNodesGallery('current');
             });
 
-            document.getElementById('cancelNodeBtn').addEventListener('click', function() {
-                document.getElementById('nodeModal').classList.remove('active');
+            document.getElementById('cancelCurrentNodeBtn').addEventListener('click', function() {
+                document.getElementById('currentNodeModal').classList.remove('active');
+            });
+
+            // Future Node Modal - Type selector
+            document.querySelectorAll('#futureTypeSelector .type-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    document.querySelectorAll('#futureTypeSelector .type-card').forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    futureModalType = this.dataset.type;
+                });
+            });
+
+            // Future Node Modal - Save
+            document.getElementById('saveFutureNodeBtn').addEventListener('click', function() {
+                const name = document.getElementById('futureNodeName').value.trim();
+                const description = document.getElementById('futureNodeDescription').value.trim();
+                
+                if (!futureModalType || !name || !description) {
+                    alert('모든 필수 항목을 입력해 주세요.');
+                    return;
+                }
+                
+                const scenario = appState.scenarios.future;
+                const node = {
+                    id: scenario.editingNode ? scenario.editingNode.id : Date.now(),
+                    type: futureModalType,
+                    sentiment: null, // No sentiment for future scenario
+                    name: name,
+                    description: description,
+                    createdAt: scenario.editingNode ? scenario.editingNode.createdAt : Date.now()
+                };
+                
+                if (scenario.editingNode) {
+                    const index = scenario.nodes.findIndex(n => n.id === scenario.editingNode.id);
+                    scenario.nodes[index] = node;
+                    logEdit('edit_node', node);
+                } else {
+                    scenario.nodes.push(node);
+                    logEdit('create_node', node);
+                }
+                
+                document.getElementById('futureNodeModal').classList.remove('active');
+                renderNodesGallery('future');
+            });
+
+            document.getElementById('cancelFutureNodeBtn').addEventListener('click', function() {
+                document.getElementById('futureNodeModal').classList.remove('active');
             });
 
             // Connection Modal
@@ -2085,12 +2322,13 @@
                     afterMentalModel: document.getElementById('afterMentalModel').value,
                     afterMentalModelOther: document.getElementById('afterMentalModelOther').value,
                     valuable: document.getElementById('reflectionValuable').value,
+                    valuableOther: document.getElementById('reflectionValuableOther').value,
                     feedback: {
                         helpedNotice: document.getElementById('feedbackClear').checked,
+                        unclearValue: document.getElementById('feedbackValue').checked,
                         unclearPattern: document.getElementById('feedbackPrompts').checked,
                         moreReflection: document.getElementById('feedbackReflection').checked,
-                        futureHard: document.getElementById('feedbackFuture').checked,
-                        unclearValue: document.getElementById('feedbackValue').checked
+                        futureHard: document.getElementById('feedbackFuture').checked
                     },
                     stats: {
                         currentNodes: appState.scenarios.current.nodes.length,
