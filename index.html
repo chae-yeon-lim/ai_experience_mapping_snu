@@ -862,7 +862,7 @@
                     <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">연구 안내</h3>
                     <p style="margin-bottom: 0.75rem; line-height: 1.6; font-size: 0.9rem;">
                         <strong>연구 목적:</strong> 학생들의 AI 활용 경험을 심층적으로 이해하고자 합니다.
-                        여러분의 경험과 관점은 더 나은 학습 도구와 교육 환경을 설계하는 데 활용됩니다.
+                        여러분의 경험과 관점은 더 나은 학습 도구와 교육 환경을 만드는데 활용됩니다.
                     </p>
                     <p style="margin-bottom: 0.75rem; line-height: 1.6; font-size: 0.9rem;">
                         <strong>참여 권리:</strong> 참여는 전적으로 자발적이며, 언제든 중단하실 수 있습니다.
@@ -929,12 +929,9 @@
                     <label class="form-label">AI가 생성한 결과물은 주로 무엇에 의해 결정된다고 생각하시나요?</label>
                     <select class="form-select" id="beforeMentalModel">
                         <option value="">현재 생각과 가장 가까운 것을 선택해 주세요</option>
-                        <option value="inherent">AI 시스템 자체의 내재적 특성이다</option>
+                        <option value="inherent">AI 시스템 자체의 특징이다</option>
                         <option value="user-driven">나의 프롬프트 작성(질문) 방식에 달려있다</option>
-                        <option value="independent">AI와 나는 다른 특징을 가지며 서로 별개다</option>
-                        <option value="one-way">AI가 내 사고에 영향을 주지만, 나는 AI에 영향을 주지 않는다</option>
-                        <option value="interactive">나의 접근 방식과 AI의 응답이 상호 영향을 준다</option>
-                        <option value="co-constructed">상호작용 과정을 통해 결과물을 공동으로 구성한다</option>
+                        <option value="interactive">나의 접근 방식과 AI의 응답이 서로 영향을 주어 결과물을 함께 만든다</option>
                         <option value="systemic">학습 데이터나 사회적 맥락 등 더 큰 시스템에서 기인한다</option>
                         <option value="other">기타</option>
                     </select>
@@ -946,15 +943,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">주로 어떤 AI 도구를 사용하시나요?</label>
-                    <textarea class="form-textarea" id="aiToolsUsed" 
-                              placeholder="예: 글쓰기에 ChatGPT, 코딩에 GitHub Copilot, 자료 조사에 Gemini..."></textarea>
-                </div>
-
-                <div class="form-group">
                     <label class="form-label">AI 활용 숙련도는 어느 정도인가요?</label>
                     <select class="form-select" id="aiExperience">
                         <option value="">선택해 주세요</option>
+                        <option value="noai">사용하지 않음</option>
                         <option value="beginner">입문 (이제 막 사용 시작)</option>
                         <option value="intermediate">중급 (특정 작업에 정기적으로 사용)</option>
                         <option value="advanced">고급 (다양한 상황에서 능숙하게 활용)</option>
@@ -990,27 +982,28 @@
             </div>
 
             <div class="panel">
-                <h2 class="panel-title">경험 패턴 매핑</h2>
+                <h2 class="panel-title">AI 사용 경험 돌아보기</h2>
                 <p class="panel-intro">
-                    해당 경험을 구성하는 주요 요소(패턴)를 식별해 보세요. 클릭하여 요소를 추가할 수 있습니다.
+                    AI 사용 경험에서 어떤 점이 기억에 남나요? 예를 들어, 급한 상황에서 AI를 사용했나요? AI가 내 의도를 놓쳤거나, 혹은 전문가 만큼 좋은 답변을 주었나요?<br>
+        아래 원을 클릭해 발견한 점을 남겨보세요.
                 </p>
 
                 <div class="guided-steps-container" id="currentGuidedSteps">
                     <div class="guided-step-circle human" id="currentAddHumanBtn">
                         <span class="step-icon">🧠</span>
-                        <span class="step-label">나의 사고/행동</span>
-                        <span class="step-hint">클릭하여 추가</span>
+                        <span class="step-label">나의 생각과 행동</span>
+                        <span class="step-hint">나의 의도, 습관, 또는 선택들<br>(예: 좋은 추가 질문을 한다, 확인 없이 너무 믿었다)</span></span>
                     </div>
                     
                     <div class="guided-step-circle ai" id="currentAddAIBtn">
                         <span class="step-icon">🤖</span>
                         <span class="step-label">AI의 반응/특징</span>
-                        <span class="step-hint">클릭하여 추가</span>
+                        <span class="step-hint">AI가 보여준 답변이나 패턴<br>(예: 설명을 명쾌하게 했다, 틀린 내용도 그럴싸하게 말했다)</span>
                     </div>
 
                     <div class="guided-step-circle any" id="currentAddAnyBtn" style="display: none;">
                         <span class="step-icon">+</span>
-                        <span class="step-label">추가하기</span>
+                        <span class="step-label">자유롭게 추가</span>
                         <span class="step-hint">선택사항</span>
                     </div>
                 </div>
@@ -1020,33 +1013,36 @@
 
             <div class="text-center">
                 <button class="btn-primary" id="currentContinueToMappingBtn" style="display: none;">
-                    패턴 연결하기 →
+                    기록한 내용 연결하기 →
                 </button>
             </div>
 
             <div id="currentMappingSection" style="display: none;">
                 <div class="panel">
-                    <h2 class="panel-title">패턴 연결하기</h2>
+                    <h2 class="panel-title">기록한 내용 사이에 어떤 관계가 있나요?</h2>
                     <p class="panel-intro">
-                        하나의 패턴을 선택한 뒤 다른 패턴을 클릭하여 두 요소 간의 관계를 연결해 주세요.
+                       나와 AI의 특징이 서로 영향을 주었나요?<br>
+            예를 들어, <strong>"지시를 명확하게 했다" → "AI가 유용한 답을 줬다"</strong><br>
+            혹은 <strong>"AI가 자신 있게 말했다" → "그래서 확인하지 않았다"</strong><br>
+            하나를 선택한 뒤, 다른 하나를 클릭해 연결해 주세요.
                     </p>
                 </div>
 
                 <div class="pattern-web" id="currentPatternWeb">
                     <div class="connection-helper" id="currentConnectionHelper">
-                        <div class="connection-helper-title">연결 가이드</div>
+                        <div class="connection-helper-title">연결 방법</div>
                         <div class="connection-helper-steps">
                             <div class="connection-helper-step">
                                 <span class="connection-helper-number">1</span>
-                                <span>첫 번째 패턴 클릭</span>
+                                <span>첫 번째 기록 클릭</span>
                             </div>
                             <div class="connection-helper-step">
                                 <span class="connection-helper-number">2</span>
-                                <span>연결할 다른 패턴 클릭</span>
+                                <span>연결할 다른 기록 클릭</span>
                             </div>
                             <div class="connection-helper-step">
                                 <span class="connection-helper-number">3</span>
-                                <span>관계의 내용 설명</span>
+                                <span>기록들 관계 설명</span>
                             </div>
                         </div>
                         <button class="connection-helper-dismiss" onclick="dismissHelper('current')">확인</button>
@@ -1059,7 +1055,7 @@
 
                 <div class="text-center" style="margin-top: 1.5rem;">
                     <button class="btn-primary" id="continueToFutureBtn">
-                        미래 시나리오로 이동 →
+                        미래 시나리오로 계속 →
                     </button>
                 </div>
             </div>
@@ -1067,46 +1063,46 @@
 
         <div id="chapter-4" class="view-section">
             <div class="panel">
-                <h2 class="panel-title">미래 시나리오 상상</h2>
+                <h2 class="panel-title">먼 미래를 상상해보세요</h2>
                 <p class="panel-intro">
-                    AI 기술이 고도로 발달한 5~10년 후를 상상해 봅니다.
-                    이상적인 AI 활용 경험은 어떤 모습일까요?
+                    AI 기술이 고도로 발달한 50~100년 후를 상상해 보세요. 
+                    당신이 바라는 이상적인 AI 활용 경험은 어떤 모습일까요?
                 </p>
 
                 <div class="form-group">
-                    <label class="form-label">상상하시는 미래 시나리오를 설명해 주세요</label>
+                    <label class="form-label">미래에서 "좋은" AI 활용 경험은 어떤 모습까요?</label>
                     <textarea class="form-textarea" id="futureContext" 
-                              placeholder="어떤 과제를 수행 중인가요? 오늘날에는 불가능하지만 미래의 AI가 가능하게 해줄 사고나 지원 방식은 무엇인가요?"></textarea>
+                              placeholder="자유로운 생각을 공유해주세요: AI와 함께할 때 어떤 기분이 들까요? AI가 당신이 무엇을 하거나 어떤 사람이 되도록 도와줄까요?"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">어떤 AI 기능이 필요할까요?</label>
-                    <input type="text" class="form-input" id="futureTool">
+                    <label class="form-label">아무리 기술이 발전해도, 꼭 피하고 싶은 것은 무엇인가요?</label>
+                    <input type="text" class="form-input" id="futureTool" placeholder="예: 스스로 생각하는 힘을 잃는 것, AI에게 조종당하는 느낌...">
                 </div>
             </div>
 
             <div class="panel">
-                <h2 class="panel-title">미래 패턴 매핑</h2>
+                <h2 class="panel-title">이런 미래를 가능하게 하려면...</h2>
                 <p class="panel-intro">
-                    이 미래 시나리오에서 기대하는(또는 피하고 싶은) 패턴은 무엇인가요?
+                    이상적인 경험을 만들기 위해 우리와 AI는 각각 어떤 역할을 해야 할까요?<br>원을 클릭해 생각을 추가하세요.
                 </p>
 
                 <div class="guided-steps-container" id="futureGuidedSteps">
                     <div class="guided-step-circle human" id="futureAddHumanBtn">
                         <span class="step-icon">🧠</span>
-                        <span class="step-label">나의 사고/행동</span>
-                        <span class="step-hint">클릭하여 추가</span>
+                        <span class="step-label">나의 역할</span>
+                        <span class="step-hint">예: 스스로 생각한다, 활용 기준을 설정한다</span>
                     </div>
                     
                     <div class="guided-step-circle ai" id="futureAddAIBtn">
                         <span class="step-icon">🤖</span>
-                        <span class="step-label">AI의 반응/특징</span>
-                        <span class="step-hint">클릭하여 추가</span>
+                        <span class="step-label">AI의 역할</span>
+                        <span class="step-hint">예: 문제점을 솔직히 말한다, 나의 성장을 돕는다</span>
                     </div>
 
                     <div class="guided-step-circle any" id="futureAddAnyBtn" style="display: none;">
                         <span class="step-icon">+</span>
-                        <span class="step-label">추가하기</span>
+                        <span class="step-label">더 추가하기</span>
                         <span class="step-hint">선택사항</span>
                     </div>
                 </div>
@@ -1116,38 +1112,38 @@
 
             <div class="text-center">
                 <button class="btn-primary" id="futureContinueToMappingBtn" style="display: none;">
-                    패턴 연결하기 →
+                    역할 연결하기 →
                 </button>
             </div>
 
             <div id="futureMappingSection" style="display: none;">
                 <div class="panel">
-                    <h2 class="panel-title">패턴 연결하기</h2>
+                    <h2 class="panel-title">어떻게 함께 할 수 있을까?</h2>
                     <p class="panel-intro">
-                        상상하는 미래 시나리오에서 이 패턴들은 서로 어떻게 연결될까요?
+                        이상적인 미래에서 나의 역할과 AI의 역할은 서로 어떻게 도울 수 있을까요?<br>두 기록을 연결하세요.
                     </p>
                 </div>
 
                 <div class="pattern-web" id="futurePatternWeb">
                     <div class="connection-helper" id="futureConnectionHelper">
-                        <div class="connection-helper-title">연결 가이드</div>
+                        <div class="connection-helper-title">연결 방법</div>
                         <div class="connection-helper-steps">
                             <div class="connection-helper-step">
                                 <span class="connection-helper-number">1</span>
-                                <span>첫 번째 패턴 클릭</span>
+                                <span>첫 번째 기록 클릭</span>
                             </div>
                             <div class="connection-helper-step">
                                 <span class="connection-helper-number">2</span>
-                                <span>연결할 다른 패턴 클릭</span>
+                                <span>연결할 다른 기 클릭</span>
                             </div>
                             <div class="connection-helper-step">
                                 <span class="connection-helper-number">3</span>
-                                <span>관계의 내용 설명</span>
+                                <span>서로 어떻게 도울 수 있는지 설명</span>
                             </div>
                         </div>
                         <button class="connection-helper-dismiss" onclick="dismissHelper('future')">확인</button>
                     </div>
-                    <div class="web-center">나의<br>비전</div>
+                    <div class="web-center">내가 바라는<br>미래</div>
                     <svg class="web-svg" id="futureSvg"></svg>
                 </div>
 
@@ -1155,7 +1151,7 @@
 
                 <div class="text-center" style="margin-top: 1.5rem;">
                     <button class="btn-primary" id="continueToReflectionBtn">
-                        회고 및 정리로 이동 →
+                        설문 마무리 →
                     </button>
                 </div>
             </div>
@@ -1163,18 +1159,15 @@
 
         <div id="chapter-5" class="view-section">
             <div class="panel">
-                <h2 class="panel-title">회고 및 정리</h2>
+                <h2 class="panel-title">설문 마무리</h2>
 
                 <div class="form-group">
                     <label class="form-label">활동 후: AI가 생성한 결과물은 주로 무엇에 의해 결정된다고 생각하시나요?</label>
                     <select class="form-select" id="afterMentalModel">
                         <option value="">현재 생각과 가장 가까운 것을 선택해 주세요</option>
-                        <option value="inherent">AI 시스템 자체의 내재적 특성이다</option>
+                        <option value="inherent">AI 시스템 자체의 특징이다</option>
                         <option value="user-driven">나의 프롬프트 작성(질문) 방식에 달려있다</option>
-                        <option value="independent">AI와 나는 다른 특징을 가지며 서로 별개다</option>
-                        <option value="one-way">AI가 내 사고에 영향을 주지만, 나는 AI에 영향을 주지 않는다</option>
-                        <option value="interactive">나의 접근 방식과 AI의 응답이 상호 영향을 준다</option>
-                        <option value="co-constructed">상호작용 과정을 통해 결과물을 공동으로 구성한다</option>
+                        <option value="interactive">나의 접근 방식과 AI의 응답이 서로 영향을 주어 결과물을 함께 만든다</option>
                         <option value="systemic">학습 데이터나 사회적 맥락 등 더 큰 시스템에서 기인한다</option>
                         <option value="other">기타</option>
                     </select>
@@ -1186,41 +1179,43 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">이 활동을 통해 알게된 점이 있다면 무엇인가요?</label>
+                    <label class="form-label">설문 활동에서 어떤 점이 가장 유익하게 느껴졌나요?</label>
                     <select class="form-select" id="reflectionValuable">
                         <option value="">가장 공감되는 내용을 선택해 주세요</option>
-                        <option value="awareness">이전에는 인식하지 못했던 패턴을 발견함</option>
-                        <option value="naming">막연했던 느낌을 구체적인 언어로 표현함</option>
-                        <option value="connections">패턴 간의 상호 연결성을 확인함</option>
-                        <option value="comparison">현재 경험과 미래 기대치를 비교해 봄</option>
-                        <option value="visualization">경험을 시각적인 지도로 정리함</option>
-                        <option value="reflection">의도적으로 경험을 성찰할 시간을 가짐</option>
-                        <option value="agency">생각보다 내 역할과 영향력이 큼을 깨달음</option>
+                        <option value="awareness">이전에는 인식하지 못했던 AI 활용 패턴을 발견함</option>
+                        <option value="naming">막연했던 느낌을 구체적인 표현할 수 있었음</option>
+                        <option value="connections">AI와 나의 관계에 대해 알 수 있었음</option>
+                        <option value="reflection">AI 경험을 성찰할 시간을 가짐</option>
+                        <option value="agency">내 역할과 영향력이 중요하다는 것을 알 수 있었음</option>
+                        <option value="other">기타</option>
                     </select>
                 </div>
 
+                <div class="form-group" id="afterOtherGroup" style="display: none;">
+                    <label class="form-label">구체적인 의견을 적어주세요</label>
+                    <input type="text" class="form-input" id="afterMentalModelOther">
+                </div>
                 <div class="form-group">
-                    <label class="form-label">이 활동을 개선하려면 어떻게 해야 할까요? (해당되는 것 모두 선택)</label>
+                    <label class="form-label">설문 활동에서 어려운 점이 있었나요? (해당되는 것 모두 선택)</label>
                     <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.75rem;">
-                        <label style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
+                       <label style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
                             <input type="checkbox" id="feedbackClear" style="width: 16px; height: 16px; margin-top: 2px; cursor: pointer;">
-                            <span>미처 생각지 못했던 부분을 발견하는 데 도움이 되었습니다.</span>
+                            <span>활동 내용을 이해하지 못했음</span>
+                        </label><label style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
+                            <input type="checkbox" id="feedbackClear" style="width: 16px; height: 16px; margin-top: 2px; cursor: pointer;">
+                            <span>기록 활동 중 본인 또는 AI에 관해 기록하는 부분이 어려웠음</span>
                         </label>
                         <label style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
                             <input type="checkbox" id="feedbackPrompts" style="width: 16px; height: 16px; margin-top: 2px; cursor: pointer;">
-                            <span>'패턴'이 정확히 무엇을 의미하는지 이해하기 어려웠습니다.</span>
+                            <span>기록 활동 중 본인 또는 AI에 관해 기록을 연결하는 부분이 어려웠음</span>
                         </label>
                         <label style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
                             <input type="checkbox" id="feedbackReflection" style="width: 16px; height: 16px; margin-top: 2px; cursor: pointer;">
-                            <span>생각을 정리하고 성찰할 시간이 더 필요했습니다.</span>
+                            <span>생각을 정리하고 성찰할 시간이 더 필요하다고 느낌</span>
                         </label>
                         <label style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
                             <input type="checkbox" id="feedbackFuture" style="width: 16px; height: 16px; margin-top: 2px; cursor: pointer;">
-                            <span>미래 시나리오를 구체적으로 상상하기 어려웠습니다.</span>
-                        </label>
-                        <label style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
-                            <input type="checkbox" id="feedbackValue" style="width: 16px; height: 16px; margin-top: 2px; cursor: pointer;">
-                            <span>이 활동이 실제 AI 활용에 어떻게 도움이 될지 잘 모르겠습니다.</span>
+                            <span>미래 시나리오를 구체적으로 상상하기 어려웠음</span>
                         </label>
                     </div>
                 </div>
@@ -1234,7 +1229,7 @@
                     <div class="info-box-title">연구 결과 받아보기</div>
                     <div class="info-box-content">
                         <p>학생들이 AI를 어떻게 활용하는지 이해하고 돕기 위한 글로벌 커뮤니티를 함께 만들어가고 있습니다.
-                           연구 결과 소식이나 향후 활동 참여에 관심이 있으시다면 이메일을 남겨주세요.</p>
+                           연구 결과 소식이나 향후 연구 활동 참여에 관심이 있으시다면 이메일을 남겨주세요.</p>
                         
                         <label style="display: flex; align-items: center; gap: 0.6rem; margin-top: 0.75rem; cursor: pointer; font-size: 0.9rem;">
                             <input type="checkbox" id="wantContact" style="width: 16px; height: 16px; cursor: pointer;">
@@ -1258,7 +1253,7 @@
 
             <div class="panel" style="background: var(--color-primary); color: white;">
                 <p style="text-align: center; font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem;">
-                    소중한 경험을 공유해 주셔서 감사합니다! 여러분의 의견은 소중하게 반영됩니다.
+                    소중한 경험을 공유해 주셔서 감사합니다! 여러분의 의견은 더 나은 교육용 도구 개발을 위해 소중하게 반영됩니다.
                 </p>
                 
                 <div class="text-center">
@@ -1278,52 +1273,52 @@
     <div id="nodeModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="modalTitle">패턴 정의하기</h3>
+                <h3 class="modal-title" id="modalTitle">기록 추가</h3>
             </div>
 
             <div class="form-group">
-                <label class="form-label">이 패턴은 '나'에 관한 것인가요, 'AI'에 관한 것인가요?</label>
+                <label class="form-label">이 기록은</label>
                 <div class="type-selector">
                     <div class="type-card human" data-type="human">
                         <div class="type-emoji">🧠</div>
-                        <div class="type-label">나의 사고/행동</div>
-                        <p class="type-description">나의 사고방식, 접근법, 가정 등</p>
+                        <div class="type-label">나에 관한 기록</div>
+                        <p class="type-description">AI 사용시 나의 행동, 생각, 감정은...</p>
                     </div>
                     <div class="type-card ai" data-type="ai">
                         <div class="type-emoji">🤖</div>
-                        <div class="type-label">AI의 반응/특성</div>
-                        <p class="type-description">AI의 행동, 출력 결과, 시스템적 특징 등</p>
+                        <div class="type-label">AI에 관한 기록</div>
+                        <p class="type-description">AI의 행동 또는 결과의 특징은...</p>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="form-label">이 패턴의 성격은 어떠한가요?</label>
+                <label class="form-label"> 경험을 평가한다면?</label>
                 <div class="sentiment-selector">
                     <div class="sentiment-card" data-sentiment="helpful">
                         <div class="sentiment-emoji">✨</div>
-                        <div class="sentiment-label">긍정적/도움됨</div>
+                        <div class="sentiment-label">긍정적 (도움이 됨, 효율적, 만족스러움)</div>
                     </div>
                     <div class="sentiment-card" data-sentiment="neutral">
                         <div class="sentiment-emoji">➖</div>
-                        <div class="sentiment-label">중립적</div>
+                        <div class="sentiment-label">중립적 (특별하지 않음)</div>
                     </div>
                     <div class="sentiment-card" data-sentiment="problematic">
                         <div class="sentiment-emoji">⚠️</div>
-                        <div class="sentiment-label">부정적/문제됨</div>
+                        <div class="sentiment-label">부정적 (문제가 됨, 불편함, 우려됨)</div>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="form-label">이 패턴의 이름을 정해주세요</label>
+                <label class="form-label">한 단어나 짧은 문구로 표현한다면?</label>
                 <input type="text" class="form-input" id="nodeName">
             </div>
 
             <div class="form-group">
                 <label class="form-label">어떤 내용을 발견하셨나요? (구체적인 설명)</label>
                 <textarea class="form-textarea" id="nodeDescription" 
-                          placeholder="어떤 일이 있었으며, 그것이 왜 중요한지 적어주세요."></textarea>
+                          placeholder="무슨 일이 있었나요? 왜 중요한가요?"></textarea>
             </div>
 
             <div class="btn-group">
